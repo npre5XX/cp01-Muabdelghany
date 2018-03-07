@@ -40,6 +40,22 @@ history(j)=0;           % counter for the number of histories before the particl
 
         history(j)=history(j)+1;
         
+        
+            if x(j)<=50                          
+                seg_a=0.12;                      % cross-setion for absrption
+                seg_s=0.05;                      
+                nwseg_f=0.15;                   
+                kinf = nwseg_f/seg_a;           
+                seg_t = seg_a + seg_s;
+                                             % for the right half of the slab
+            else
+                seg_a=0.10;                      
+                seg_s=0.05;                      
+                nwseg_f=0.12;                    
+                kinf = nwseg_f/seg_a;            
+                seg_t = seg_a + seg_s;
+            end 
+
         if x(j)>0 && x(j)<100 && rand()< seg_a/seg_t   % No leakage and absorbtion occured
             xn=1+fix(10*x(j));                            % defining a discretization for x (delta(x)= 0.1 Cm) 
             epsi(j,xn)=0;
